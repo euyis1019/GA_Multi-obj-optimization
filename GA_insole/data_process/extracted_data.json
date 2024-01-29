@@ -1,0 +1,591 @@
+{
+    "138.xls": {
+        "height": 9.8,
+        "length": 99.5,
+        "width": 29.7
+    },
+    "104.xls": {
+        "height": 22.5,
+        "length": 110.7,
+        "width": 35.2
+    },
+    "11.xls": {
+        "height": 15.5,
+        "length": 104.9,
+        "width": 33.7
+    },
+    "10.xls": {
+        "height": 27.5,
+        "length": 104.5,
+        "width": 33.6
+    },
+    "105.xls": {
+        "height": 13,
+        "length": 114.7,
+        "width": 35.6
+    },
+    "139.xls": {
+        "height": 0,
+        "length": 271.4,
+        "width": 0
+    },
+    "107.xls": {
+        "height": 19,
+        "length": 117.6,
+        "width": 42.5
+    },
+    "12.xls": {
+        "height": 19.6,
+        "length": 99.9,
+        "width": 30.9
+    },
+    "13.xls": {
+        "height": 19.5,
+        "length": 104.1,
+        "width": 30.1
+    },
+    "106.xls": {
+        "height": 36.6,
+        "length": 115.6,
+        "width": 45.4
+    },
+    "102.xls": {
+        "height": 23.6,
+        "length": 106.6,
+        "width": 33.3
+    },
+    "17.xls": {
+        "height": 0,
+        "length": 257.3,
+        "width": 0
+    },
+    "16.xls": {
+        "height": 0,
+        "length": 256.7,
+        "width": 0
+    },
+    "103.xls": {
+        "height": 7.9,
+        "length": 108.7,
+        "width": 26.6
+    },
+    "101.xls": {
+        "height": 28.6,
+        "length": 107.3,
+        "width": 34.4
+    },
+    "129.xls": {
+        "height": 0,
+        "length": 245.1,
+        "width": 0
+    },
+    "28.xls": {
+        "height": 0,
+        "length": 284,
+        "width": 0
+    },
+    "14.xls": {
+        "height": 0,
+        "length": 274.7,
+        "width": 0
+    },
+    "15.xls": {
+        "height": 13.7,
+        "length": 104,
+        "width": 33.2
+    },
+    "29.xls": {
+        "height": 21.4,
+        "length": 101.8,
+        "width": 31.9
+    },
+    "128.xls": {
+        "height": 15.5,
+        "length": 113.1,
+        "width": 40.9
+    },
+    "100.xls": {
+        "height": 14.8,
+        "length": 105.4,
+        "width": 25.6
+    },
+    "99.xls": {
+        "height": 35.6,
+        "length": 108.9,
+        "width": 33.2
+    },
+    "8.xls": {
+        "height": 0,
+        "length": 260.2,
+        "width": 0
+    },
+    "9.xls": {
+        "height": 19.4,
+        "length": 101.9,
+        "width": 33.4
+    },
+    "98.xls": {
+        "height": 12.8,
+        "length": 101.7,
+        "width": 24.4
+    },
+    "58.xls": {
+        "height": 21.5,
+        "length": 104.4,
+        "width": 32.8
+    },
+    "149.xls": {
+        "height": 5.6,
+        "length": 106.1,
+        "width": 25.9
+    },
+    "48.xls": {
+        "height": 0,
+        "length": 258.8,
+        "width": 0
+    },
+    "49.xls": {
+        "height": 23.7,
+        "length": 103.5,
+        "width": 33.1
+    },
+    "148.xls": {
+        "height": 6.7,
+        "length": 106.5,
+        "width": 26.2
+    },
+    "88.xls": {
+        "height": 27.7,
+        "length": 105.4,
+        "width": 32.9
+    },
+    "89.xls": {
+        "height": 17.6,
+        "length": 103.4,
+        "width": 28.7
+    },
+    "90.xls": {
+        "height": 0,
+        "length": 271.1,
+        "width": 0
+    },
+    "84.xls": {
+        "height": 12.6,        "length": 105.5,
+        "width": 34.9
+    },
+    "152.xls": {
+        "height": 9.3,
+        "length": 114.8,
+        "width": 28.2
+    },
+    "146.xls": {
+        "height": 10.2,
+        "length": 99.4,
+        "width": 23.8
+    },
+    "1.xls": {
+        "height": 30.1,
+        "length": 117.3,
+        "width": 38.7
+    },
+    "53.xls": {
+        "height": 0,
+        "length": 253.2,
+        "width": 0
+    },
+    "47.xls": {
+        "height": 0,
+        "length": 254.3,
+        "width": 0
+    },
+    "46.xls": {
+        "height": 11.7,
+        "length": 93.5,
+        "width": 30.1
+    },
+    "52.xls": {
+        "height": 0,
+        "length": 250.3,
+        "width": 0
+    },
+    "147.xls": {
+        "height": 9.9,
+        "length": 104.2,
+        "width": 25.3
+    },
+    "153.xls": {
+        "height": 14.4,
+        "length": 111.2,
+        "width": 40.4
+    },
+    "85.xls": {
+        "height": 10.8,
+        "length": 103.2,
+        "width": 25.1
+    },
+    "91.xls": {
+        "height": 13.4,
+        "length": 102.7,
+        "width": 24.4
+    },
+    "87.xls": {
+        "height": 24.7,
+        "length": 102.1,
+        "width": 34.8
+    },
+    "93.xls": {
+        "height": 10.9,
+        "length": 119.8,
+        "width": 27.9
+    },
+    "145.xls": {
+        "height": 0,
+        "length": 325.4,
+        "width": 0
+    },
+    "151.xls": {
+        "height": 33.4,
+        "length": 105.8,
+        "width": 36.3
+    },
+    "44.xls": {
+        "height": 0,
+        "length": 254.7,
+        "width": 0
+    },
+    "50.xls": {
+        "height": 0,
+        "length": 242.7,
+        "width": 0
+    },
+    "2.xls": {
+        "height": 0,
+        "length": 288.2,
+        "width": 0
+    },
+    "79.xls": {
+        "height": 22.7,
+        "length": 129.4,
+        "width": 42.9
+    },
+    "51.xls": {
+        "height": 0,
+        "length": 250.4,
+        "width": 0
+    },
+    "3.xls": {
+        "height": 23.3,
+        "length": 115.7,
+        "width": 39.1
+    },
+    "45.xls": {
+        "height": 33.8,
+        "length": 102.2,
+        "width": 30.9
+    },
+    "150.xls": {
+        "height": 5.2,
+        "length": 109.9,
+        "width": 26.7
+    },
+    "144.xls": {
+        "height": 6.1,
+        "length": 101.4,
+        "width": 24.7
+    },
+    "92.xls": {
+        "height": 7.8,
+        "length": 99.9,
+        "width": 24.2
+    },
+    "86.xls": {
+        "height": 2.9,
+        "length": 120.5,
+        "width": 29
+    },
+    "140.xls": {
+        "height": 7.4,
+        "length": 105.1,
+        "width": 25.6
+    },
+    "154.xls": {
+        "height": 11.7,
+        "length": 113.3,
+        "width": 35.4
+    },
+    "82.xls": {
+        "height": 8.3,
+        "length": 99.4,
+        "width": 24
+    },
+    "96.xls": {
+        "height": 0,
+        "length": 272.8,
+        "width": 0
+    },
+    "41.xls": {
+        "height": 18.3,
+        "length": 98.3,
+        "width": 33.4
+    },
+    "7.xls": {
+        "height": 23,
+        "length": 102.6,
+        "width": 33.5
+    },
+    "55.xls": {
+        "height": 0,
+        "length": 283.8,
+        "width": 0
+    },
+    "6.xls": {
+        "height": 29.3,
+        "length": 113.4,
+        "width": 37.9
+    },
+    "54.xls": {
+        "height": 19.3,
+        "length": 111.6,
+        "width": 34.7
+    },
+    "97.xls": {
+        "height": 9.3,
+        "length": 100.3,
+        "width": 24.2
+    },
+    "83.xls": {
+        "height": 0,
+        "length": 257.6,
+        "width": 0
+    },
+    "155.xls": {
+        "height": 25.7,
+        "length": 106.8,
+        "width": 37.2
+    },
+    "141.xls": {
+        "height": 10.8,
+        "length": 110.4,
+        "width": 38.1
+    },
+    "143.xls": {
+        "height": 9,
+        "length": 104.2,
+        "width": 33.8
+    },
+    "95.xls": {
+        "height": 20.3,
+        "length": 106.1,
+        "width": 32.7
+    },
+    "81.xls": {
+        "height": 18.4,
+        "length": 100.2,
+        "width": 29.1
+    },
+    "56.xls": {
+        "height": 10.9,
+        "length": 107.1,
+        "width": 34
+    },
+    "4.xls": {
+        "height": 27.1,
+        "length": 118.7,
+        "width": 37.7
+    },
+    "42.xls": {
+        "height": 12.4,
+        "length": 106.9,
+        "width": 34.6
+    },
+    "43.xls": {
+        "height": 14.4,
+        "length": 96.2,
+        "width": 32.1
+    },
+    "57.xls": {
+        "height": 0,
+        "length": 248,
+        "width": 0
+    },
+    "5.xls": {
+        "height": 0,
+        "length": 289.9,
+        "width": 0
+    },
+    "80.xls": {
+        "height": 16.7,
+        "length": 103.7,
+        "width": 30.6
+    },
+    "94.xls": {
+        "height": 27.3,
+        "length": 106.1,
+        "width": 29
+    },
+    "142.xls": {
+        "height": 9.6,
+        "length": 104,
+        "width": 24.9
+    },
+    "156.xls": {
+        "height": 0,
+        "length": 267.7,
+        "width": 0
+    },
+    "131.xls": {
+        "height": 7.6,
+        "length": 105.2,
+        "width": 31.7
+    },
+    "125.xls": {
+        "height": 17.7,
+        "length": 118,
+        "width": 38.8
+    },
+    "30.xls": {
+        "height": 29.4,
+        "length": 97.9,
+        "width": 31.8
+    },
+    "24.xls": {
+        "height": 22.4,
+        "length": 103,
+        "width": 33.3
+    },
+    "18.xls": {
+        "height": 20.2,
+        "length": 98.9,
+        "width": 34.2
+    },
+    "19.xls": {
+        "height": 14.2,
+        "length": 98.2,
+        "width": 32.3
+    },
+    "25.xls": {
+        "height": 20.7,
+        "length": 104.9,
+        "width": 33.9
+    },
+    "31.xls": {
+        "height": 29.5,
+        "length": 99.2,
+        "width": 32.7
+    },
+    "124.xls": {
+        "height": 15,
+        "length": 120.2,
+        "width": 39.5
+    },
+    "130.xls": {
+        "height": 18.2,
+        "length": 97.4,
+        "width": 32
+    },
+    "126.xls": {
+        "height": 9,
+        "length": 111.7,
+        "width": 35.6
+    },
+    "132.xls": {
+        "height": 7.3,
+        "length": 107.5,
+        "width": 34.8
+    },
+    "27.xls": {
+        "height": 26.2,
+        "length": 102.5,
+        "width": 34
+    },
+    "32.xls": {
+        "height": 16,
+        "length": 103.8,
+        "width": 31.5
+    },
+    "26.xls": {
+        "height": 0,
+        "length": 249.1,
+        "width": 0.1
+    },
+    "133.xls": {
+        "height": 21.9,
+        "length": 93.4,
+        "width": 29.4
+    },
+    "127.xls": {
+        "height": 16.3,
+        "length": 114,
+        "width": 37.5
+    },
+    "123.xls": {
+        "height": 29.6,
+        "length": 106.8,
+        "width": 37.5
+    },
+    "137.xls": {
+        "height": 26.2,
+        "length": 99.4,
+        "width": 32.7
+    },
+    "22.xls": {
+        "height": 0,
+        "length": 257.4,
+        "width": 0
+    },
+    "23.xls": {
+        "height": 9.4,
+        "length": 101.6,
+        "width": 34.8
+    },
+    "136.xls": {
+        "height": 11.8,
+        "length": 101,
+        "width": 23.6
+    },
+    "122.xls": {
+        "height": 0,
+        "length": 270.7,
+        "width": 0
+    },
+    "134.xls": {
+        "height": 22,
+        "length": 104.3,
+        "width": 36.6
+    },
+    "120.xls": {
+        "height": 8.1,
+        "length": 110.1,
+        "width": 37.3
+    },
+    "108.xls": {
+        "height": 0,
+        "length": 306.8,
+        "width": 0
+    },
+    "21.xls": {
+        "height": 15.9,
+        "length": 103.5,
+        "width": 33.7
+    },
+    "20.xls": {
+        "height": 20.5,
+        "length": 96.3,
+        "width": 30.3
+    },
+    "109.xls": {
+        "height": 0,
+        "length": 291.6,
+        "width": 0
+    },
+    "121.xls": {
+        "height": 18.9,
+        "length": 106.6,
+        "width": 25.5
+    },
+    "135.xls": {
+        "height": 24.7,
+        "length": 102,
+        "width": 33.8
+    }
+}
