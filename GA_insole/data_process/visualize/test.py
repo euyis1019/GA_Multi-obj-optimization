@@ -41,6 +41,6 @@ ax.set_title('Arch Shape Surface with Special Square')
 ax.set_box_aspect([length, width, height])  # aspect ratio is 1:1:1
 
 # Set the viewing angle for better visualization
-ax.view_init(elev=40., azim=-60)
+ax.view_init(elev=20., azim=-60)
 
 plt.show()
