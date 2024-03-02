@@ -28,8 +28,8 @@ def Buffer(thickness, hardness, a1=1, k1=0.6, k2=0.4):
 def Support(r, w, l, a2=1, k3a=0.7, k3b=0.1, k3c=0.3):
     return (a2) * (k3a * r - k3b * w / l - k3c* (r/(w*l)) ** 2)
 
-def light_weight(thickness, area, de, a3=1):
-    density = calculate_density(de)
+def light_weight(thickness, area, hardness, a3=1):
+    density = calculate_density(hardness)
     V = area * thickness
     return a3 * (density * V)
 
