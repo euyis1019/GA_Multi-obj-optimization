@@ -26,8 +26,10 @@ def Buffer(thickness, hardness, a1=1, k1=0.6, k2=0.4):
     return (-a1) * (k1 * thickness - k2 * hardness ** 2)
 
 def Support(r, w, l, a2=1, k3a=0.7, k3b=0.1, k3c=0.3):
-    return (a2) * (k3a * r - k3b * w / l - k3c* (r/(w*l)) ** 2)
-
+    try:
+        return (a2) * (k3a * r - k3b * w / l - k3c* (r/(w*l)) ** 2)
+    except ZeroDivisionError:
+        return 1 #There should be a worse result? I think
 def light_weight(thickness, area, hardness, a3=1):
     density = calculate_density(hardness)
     V = area * thickness
