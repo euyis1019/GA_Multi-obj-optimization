@@ -1,139 +1,114 @@
-import torchaudio
-import torchaudio.compliance.kaldi as kaldi
-from ais_bench.infer.interface import InferSession
+import pandas as pd
 import numpy as np
+import random
+from deap import base
+from deap import creator
+from deap import tools
+from evaluate_function import Buffer, Support, light_weight, fit, cal_area
+import json
+from tqdm import tqdm
+
+# 加载配置文件
+with open("/Users/eric/Documents/GitHub/Parameters Optimization for Insole/GA_insole/GP/config.json",
+          "r") as config_file:
+    config = json.load(config_file)
+
+# 从配置文件中读取的固定常量
+a, b, c, d = config['a'], config['b'], config['c'], config['d']
+
+param_bounds = [
+    (0, 10),  # length
+    (0, 10),  # width
+    (0, 10),  # R
+    (0, 10),  # Thickness
+    (0, 100),  # Hardness
+    (-10, 10),  # A
+    (-10, 10),  # B
+    (-10, 10),  # C
+    (-10, 10)  # D
+]
+
+weights = (-1., -1., -1., -1.)
+creator.create("FitnessMin", base.Fitness, weights=weights)
+creator.create("Individual", list, fitness=creator.FitnessMin)
 
 
-class WeNetASR:
-    def __init__(self, model_path, vocab_path):
-        """初始化模型，加载词表"""
-        self.vocabulary = load_vocab(vocab_path)
-        self.model = InferSession(0, model_path)
-        # 获取模型输入特征的最大长度
-        self.max_len = self.model.get_inputs()[0].shape[1]
-
-    def transcribe(self, wav_file):
-        """执行模型推理，将录音文件转为文本。"""
-        feats_pad, feats_lengths = self.preprocess(wav_file)
-        ##这里获得了特征响亮、时序信息
-        output = self.model.infer([feats_pad, feats_lengths])
-        #这个ais库不知道啥来头
-        txt = self.post_process(output)
-        return txt
-
-    def preprocess(self, wav_file):
-        """数据预处理"""
-        waveform, sample_rate = torchaudio.load(wav_file)
-        # 音频重采样，采样率16000
-        waveform, sample_rate = resample(waveform, sample_rate, resample_rate=16000)
-        # 计算fbank特征
-        feature = compute_fbank(waveform, sample_rate)
-        feats_lengths = np.array([feature.shape[0]]).astype(np.int32)
-        # 对输入特征进行padding，使符合模型输入尺寸
-        feats_pad = pad_sequence(feature,
-                                 batch_first=True,
-                                 padding_value=0,
-                                 max_len=self.max_len)
-        feats_pad = feats_pad.numpy().astype(np.float32)
-        return feats_pad, feats_lengths
-
-    def post_process(self, output):
-        """对模型推理结果进行后处理，根据贪心策略选择概率最大的token，去除重复字符和空白字符，得到最终文本。"""
-        encoder_out_lens, probs_idx = output[1], output[4]
-        token_idx_list = probs_idx[0, :, 0][:encoder_out_lens[0]]
-        token_idx_list = remove_duplicates_and_blank(token_idx_list)
-        text = ''.join(self.vocabulary[token_idx_list])
-        return text
+def evaluate(individual):
+    # 解包个体的参数
+    length, width, R, Thickness, Hardness, A, B, C, D = individual
+    area = cal_area(length, width, A, B, C, D)  # 假设有计算面积的函数
+    buffer = Buffer(Thickness, Hardness)
+    support = Support(R, width, length)
+    lw = light_weight(Thickness, area, Hardness)  # 使用Thickness, area, 和Hardness
+    # 使用个体的A, B, C, D 和 配置文件中的a, b, c, d
+    f = fit(length, width, A, B, C, D, a, b, c, d)
+    return (buffer, support, lw, f)
 
 
-def remove_duplicates_and_blank(token_idx_list):
-    """去除重复字符和空白字符"""
-    res = []
-    cur = 0
-    BLANK_ID = 0
-    while cur < len(token_idx_list):
-        if token_idx_list[cur] != BLANK_ID:
-            res.append(token_idx_list[cur])
-        prev = cur
-        while cur < len(token_idx_list) and token_idx_list[cur] == token_idx_list[prev]:
-            cur += 1
-    return res
+def random_generation():
+    return [random.uniform(lower, upper) for lower, upper in param_bounds]
 
 
-def pad_sequence(seq_feature, batch_first=True, padding_value=0, max_len=966):
-    """对输入特征进行padding，使符合模型输入尺寸"""
-    feature_shape = seq_feature.shape
-    feat_len = feature_shape[0]
-    if feat_len > max_len:
-        # 如果输入特征长度大于模型输入尺寸，则截断
-        seq_feature = seq_feature[:max_len].unsqueeze(0)
-        return seq_feature
+toolbox = base.Toolbox()
 
-    batch_size = 1
-    trailing_dims = feature_shape[1:]
-    if batch_first:
-        out_dims = (batch_size, max_len) + trailing_dims
-    else:
-        out_dims = (max_len, batch_size) + trailing_dims
+toolbox.register("attr_float", random_generation)
+toolbox.register("individual", tools.initIterate, creator.Individual, toolbox.attr_float)
+toolbox.register("population", tools.initRepeat, list, toolbox.individual)
 
-    out_tensor = seq_feature.data.new(*out_dims).fill_(padding_value)
-    if batch_first:
-        out_tensor[0, :feat_len, ...] = seq_feature
-    else:
-        out_tensor[:feat_len, 0, ...] = seq_feature
-    return out_tensor
+toolbox.register("evaluate", evaluate)
+toolbox.register("mate", tools.cxTwoPoint)
+toolbox.register("mutate", tools.mutPolynomialBounded, low=[b[0] for b in param_bounds],
+                 up=[b[1] for b in param_bounds], eta=1.0, indpb=0.05)
+toolbox.register("select", tools.selTournament, tournsize=3)
 
 
-def resample(waveform, sample_rate, resample_rate=16000):
-    """音频重采样"""
-    waveform = torchaudio.transforms.Resample(
-        orig_freq=sample_rate, new_freq=resample_rate)(waveform)
-    return waveform, resample_rate
-
-
-def compute_fbank(waveform,
-                  sample_rate,
-                  num_mel_bins=80,
-                  frame_length=25,
-                  frame_shift=10,
-                  dither=0.0):
-    """提取filter bank音频特征"""
-    AMPLIFY_FACTOR = 1 << 15
-    waveform = waveform * AMPLIFY_FACTOR
-    mat = kaldi.fbank(waveform,
-                      num_mel_bins=num_mel_bins,
-                      frame_length=frame_length,
-                      frame_shift=frame_shift,
-                      dither=dither,
-                      energy_floor=0.0,
-                      sample_frequency=sample_rate)
-    return mat
-
-
-def load_vocab(txt_path):
-    """加载词表"""
-    vocabulary = []
-    LEN_OF_VALID_FORMAT = 2
-    with open(txt_path, 'r') as fin:
-        for line in fin:
-            arr = line.strip().split()
-            # 词表格式：token id
-            if len(arr) != LEN_OF_VALID_FORMAT:
-                raise ValueError(f"Invalid line: {line}. Expect format: token id")
-            vocabulary.append(arr[0])
-    return np.array(vocabulary)
+# toolbox.population(n=10)
+# print(toolbox.population(n=10))
 
 
 def main():
-    model_path = "offline_encoder.om"
-    vocab_path = 'vocab.txt'
+    pop = toolbox.population(n=30)
 
-    model = WeNetASR(model_path, vocab_path)
-    wav_file = 'sample.wav'
+    # 评估整个种群中每个个体的适应度
+    fitnesses = list(map(toolbox.evaluate, pop))
+    for ind, fit in zip(pop, fitnesses):
+        ind.fitness.values = fit
 
-    txt = model.transcribe(wav_file)
-    print(txt)
+    CXPB, MUTPB = 0.5, 0.2  # 交叉和变异的概率
+
+    # 开始进化
+    for g in tqdm(range(200), desc="进化进度"):  # 使用tqdm包装循环，提供进度条
+        # 选择下一代个体
+        offspring = toolbox.select(pop, len(pop))
+        # 克隆选中的个体
+        offspring = list(map(toolbox.clone, offspring))
+
+        # 对后代应用交叉和变异
+        for child1, child2 in zip(offspring[::2], offspring[1::2]):
+            if random.random() < CXPB:
+                toolbox.mate(child1, child2)
+                del child1.fitness.values
+                del child2.fitness.values
+
+        for mutant in offspring:
+            if random.random() < MUTPB:
+                toolbox.mutate(mutant)
+                del mutant.fitness.values
+
+        # 评估所有适应度无效的个体
+        invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
+        fitnesses = map(toolbox.evaluate, invalid_ind)
+        for ind, fit in zip(invalid_ind, fitnesses):
+            ind.fitness.values = fit
+
+        pop[:] = offspring  # 更新种群
+
+    # 寻找并返回最佳个体
+    best = pop[np.argmin([sum(toolbox.evaluate(x)) for x in pop])]
+    return best
 
 
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    best_solution = main()
+    print("Best Solution:", best_solution)
+    print("Fitness:", best_solution.fitness.values)
