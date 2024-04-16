@@ -1,4 +1,4 @@
-## Optimization of Arch Support Insoles through Genetic Algorithm
+# Optimization of Arch Support Insoles through Genetic Algorithm
 
 ### Project Description
 This project enhances the functionality and comfort of insoles by optimizing their design parameters using a genetic algorithm. Implemented in Python, the project aims to optimize key parameters such as arch length, width, and height through a parametric design process, addressing the specific needs of students in costume performance disciplines.
@@ -10,8 +10,12 @@ This project enhances the functionality and comfort of insoles by optimizing the
 
 # The Genetic Algorithm is based on DEAP
 https://github.com/DEAP/deap
+```
 
-
+## Project Structure
+- **GA_insole/GA/Model_GA.py**: This is the core file of the project where the main genetic algorithm is implemented.
+- **GA_insole/data_process**: This directory contains scripts that demonstrate the process of selecting and cleaning raw data. These scripts are essential for preparing the data for use with the genetic algorithm.
+- **GA_insole/visualize**: This folder includes scripts for generating visualizations based on the paper's requirements. These visualizations help in understanding the output of the genetic algorithm and the effectiveness of the insole designs.
 
 ## Usage
 ### Data Preparation
