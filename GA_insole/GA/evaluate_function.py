@@ -1,9 +1,10 @@
-import math
-from scipy.integrate import dblquad
 # ---------------------------------------------------------------
 # Copyright (c) 2024-2025 SCNU, Yifu Guo And GDUT. All rights reserved.
 # Licensed under the Apache License, Version 2.0
 # ---------------------------------------------------------------
+
+import math
+from scipy.integrate import dblquad
 
 
 #Hmat == Hardness

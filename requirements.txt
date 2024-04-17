@@ -1,0 +1,8 @@
+deap==1.4.1
+matplotlib==3.7.2
+numpy==1.25.2
+opencv_python_headless==4.8.1.78
+pandas==2.2.2
+plotly==5.9.0
+scipy==1.13.0
+tqdm==4.65.0

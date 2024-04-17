@@ -1,3 +1,7 @@
+# ---------------------------------------------------------------
+# Copyright (c) 2024-2025 SCNU, Yifu Guo And GDUT. All rights reserved.
+# Licensed under the Apache License, Version 2.0
+# ---------------------------------------------------------------
 import pandas as pd
 import numpy as np
 import random
@@ -9,8 +13,8 @@ import json
 from tqdm import tqdm
 
 # 加载配置文件
-with open("/Users/eric/Documents/GitHub/Parameters Optimization for Insole/GA_insole/GP/config.json",
-          "r") as config_file:
+with open("GA_insole/GA/config.json",
+          "r") as config_file: 
     config = json.load(config_file)
 
 # 从配置文件中读取的固定常量
