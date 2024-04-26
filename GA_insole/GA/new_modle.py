@@ -1,14 +1,22 @@
 import random
+import importlib
 from tqdm import tqdm
 from deap import base, creator, tools
-from new_evaluate_functions import total, param_bounds
+import new_evaluate_functions
+
+# refresh data
+importlib.reload(new_evaluate_functions)
+param_bounds = new_evaluate_functions.param_bounds
+total = new_evaluate_functions.total
+
 
 # 定义问题的参数
 # 可以更改的变量：问题类型、问题维度、种群大小、迭代次数等
 # 示例问题：最大化一个二元函数 f(x, y) = x^2 + y^2
 population_size = 300
-num_generations = 200
+num_generations = 100
 CXPB, MUTPB = 0.5, 0.2  # 交叉和变异的概率
+
 
 # 创建适应度评价类和个体类
 creator.create("Fitness", base.Fitness, weights=(1.0,))
@@ -39,6 +47,10 @@ toolbox.register("select", tools.selTournament, tournsize=3)
 
 # 遗传算法主循环
 def main():
+    refresh_file()
+    
+    order_ind = []
+    
     # 生成初始种群
     population = toolbox.population(n=population_size)
     
@@ -75,27 +87,54 @@ def main():
         
         # 用变异后的个体替代原始种群
         population[:] = offspring
+        
+        # 选取当前种群最优个体
+        order_ind = tools.selBest(population, population_size)
+        
+        output(order_ind)
     
     # 返回最优个体
-    best_ind = tools.selBest(population, 1)[0]
-    return best_ind
+    return order_ind
+
+
+def refresh_file():
+    file = open("output.txt", "w")
+    file.close()
+    
+    return
+
+
+def output(order_ind):
+    file = open("output.txt", "a")
+    
+    file.write(str(order_ind[0].fitness.values[0]) + '\n')
+    file.write(str(sum([order_ind[_].fitness.values[0] for _ in range(population_size * 95 // 100)]) / (population_size * 95 // 100)) + '\n')
+    for _ in order_ind[0]:
+        file.write(str(_) + '\n')
+    file.write('\n')
+    
+    file.close()
+    
+    return
 
 
 if __name__ == "__main__":
-    best_ind = main()
+    order_ind = main()
     
     print("Minimum sizes:", [_[0] for _ in param_bounds])
     
-    print("Best solution:", best_ind)
+    print("Best solution:", order_ind[0])
     
     print("Maximum sizes:", [_[1] for _ in param_bounds])
     
     print("Whether converge: ", end='')
-    for best, bounds in zip(best_ind, param_bounds):
+    for best, bounds in zip(order_ind[0], param_bounds):
         if abs(best - bounds[0]) < 0.01 or abs(best - bounds[1]) < 0.01:
             print(False, end=' ')
         else:
             print(True, end=' ')
     print()
     
-    print("Best fitness:", best_ind.fitness.values)
+    print("Best fitness:", order_ind[0].fitness.values)
+    
+    print()
