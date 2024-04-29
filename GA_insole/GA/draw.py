@@ -4,6 +4,7 @@ generations = 100
 graphs_num = 7
 
 name_map = ["Best_Ind Fitness", "Population Fitness", "Length", "Width", "Thickness", "Height", "Density"]
+color_map = ["r", "g", "b", "c", "m", "y", "k"]
 
 x = [_ for _ in range(1, generations + 1)]
 
@@ -19,7 +20,7 @@ file.close()
 for _ in range(graphs_num):
     plt.close()
     
-    plt.plot(x, y[_])
+    plt.plot(x, y[_], color=color_map[_])
 
     # 添加标题和轴标签
     plt.title('Visualization')
