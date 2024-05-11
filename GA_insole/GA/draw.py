@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 generations = 100
 graphs_num = 7
 
-name_map = ["Best_Ind Fitness", "Population Fitness", "Length", "Width", "Thickness", "Height", "Density"]
+y_name_map = ["Best_Ind Fitness", "Population Fitness", "Length", "Width", "Thickness", "Height", "Density"]
 color_map = ["r", "g", "b", "c", "m", "y", "k"]
 
 x = [_ for _ in range(1, generations + 1)]
@@ -23,9 +23,9 @@ for _ in range(graphs_num):
     plt.plot(x, y[_], color=color_map[_])
 
     # 添加标题和轴标签
-    plt.title('Visualization')
+    plt.title(str(y_name_map[_] + " 收敛图"), fontproperties='SimHei')
     plt.xlabel('Generations')
-    plt.ylabel(name_map[_])
+    plt.ylabel(y_name_map[_])
     
     # 显示网格（可选）
     plt.grid(True)
