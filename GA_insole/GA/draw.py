@@ -23,7 +23,7 @@ for _ in range(graphs_num):
     plt.plot(x, y[_], color=color_map[_])
 
     # 添加标题和轴标签
-    plt.title(str(y_name_map[_] + " 收敛图"), fontproperties='SimHei')
+    plt.title(str(y_name_map[_] + "-value convergence graph"), fontproperties='SimHei')
     plt.xlabel('Generations')
     plt.ylabel(y_name_map[_])
     
